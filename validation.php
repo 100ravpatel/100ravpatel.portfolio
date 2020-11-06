@@ -13,6 +13,6 @@ if( $num==1 ){
     header('location:home.php');
 } 
 else{
-    header('location:index.php');
+    header('location:login.php');
 }
 ?>
