@@ -1,139 +1,142 @@
-function ht() {
-    var elem = document.getElementById("ht");   
-    var width =0;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 95) {
-        clearInterval(id);
-      } else {
-        width++; 
-        elem.style.width = width + '%'; 
-        elem.innerHTML = width * 1  + '%';
-      }
+let spinnerWrapper = document.querySelector('.spinner-wrapper');
+
+window.addEventListener('load', function () {
+
+    // spinnerWrapper.style.display = 'none';
+
+    spinnerWrapper.parentElement.removeChild(spinnerWrapper);
+
+});
+
+// Menu Show
+
+const showMenu = (toggleId, navId) =>{
+
+    const toggle = document.getElementById(toggleId),
+
+    nav = document.getElementById(navId)
+
+    if(toggle && nav){
+
+        toggle.addEventListener('click',()=>{
+
+            nav.classList.toggle('show')
+
+            
+
+        })
+
     }
-  }
 
-  /* for css3 button */ 
+}
 
-  function cs() {
-    var elem = document.getElementById("cs");   
-    var width =0;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 85) {
-        clearInterval(id);
-      } else {
-        width++; 
-        elem.style.width = width + '%'; 
-        elem.innerHTML = width * 1  + '%';
-      }
-    }
-  }
+showMenu('nav-toggle','nav-menu')
 
-/* for javaScript button */ 
+// Remove menu
 
-  function js() {
-    var elem = document.getElementById("js");   
-    var width =0;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 70) {
-        clearInterval(id);
-      } else {
-        width++; 
-        elem.style.width = width + '%'; 
-        elem.innerHTML = width * 1  + '%';
-      }
-    }
-  }
+const navLink = document.querySelectorAll('.nav_link')
 
-/* for Python button */ 
+function linkAction(){
 
-  function py() {
-    var elem = document.getElementById("py");   
-    var width =0;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 50) {
-        clearInterval(id);
-      } else {
-        width++; 
-        elem.style.width = width + '%'; 
-        elem.innerHTML = width * 1  + '%';
-      }
-    }
-  }
+    const navMenu = document.getElementById('nav-menu')
 
-/* for java button */ 
+    navMenu.classList.remove('show')
 
-  function php() {
-    var elem = document.getElementById("ja");   
-    var width =0;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 30) {
-        clearInterval(id);
-      } else {
-        width++; 
-        elem.style.width = width + '%'; 
-        elem.innerHTML = width * 1  + '%';
-      }
-    }
-  }
+}
 
-  function ja() {
-    var elem = document.getElementById("php");   
-    var width =0;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 50) {
-        clearInterval(id);
-      } else {
-        width++; 
-        elem.style.width = width + '%'; 
-        elem.innerHTML = width * 1  + '%';
-      }
-    }
-  }
-  function boot() {
-    var elem = document.getElementById("boot");   
-    var width =0;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 50) {
-        clearInterval(id);
-      } else {
-        width++; 
-        elem.style.width = width + '%'; 
-        elem.innerHTML = width * 1  + '%';
-      }
-    }
-  }
-  setInterval(showTime, 1000); 
-  function showTime() { 
-      let time = new Date(); 
-      let hour = time.getHours(); 
-      let min = time.getMinutes(); 
-      let sec = time.getSeconds(); 
-      am_pm = "AM"; 
-    
-      if (hour > 12) { 
-          hour -= 12; 
-          am_pm = "PM"; 
-      } 
-      if (hour == 0) { 
-          hr = 12; 
-          am_pm = "AM"; 
-      } 
-    
-      hour = hour < 10 ? "0" + hour : hour; 
-      min = min < 10 ? "0" + min : min; 
-      sec = sec < 10 ? "0" + sec : sec; 
-    
-      let currentTime = hour + ":" 
-              + min + ":" + sec + am_pm; 
-    
-      document.getElementById("clock") 
-              .innerHTML = currentTime; 
-  } 
-  showTime();
+navLink.forEach(n => n.addEventListener('click',linkAction))
+
+// Scroll section active link
+
+ const sections = document.querySelectorAll('section[id]')
+
+ window.addEventListener('scroll',scrollActive)
+
+ function scrollActive(){
+
+     const scrollY = window.pageYOffset
+
+     sections.forEach(current =>{
+
+         const sectionHeight = current.offsetHeight
+
+         const sectionTop = current.offsetTop - 50;
+
+         sectionId = current.getAttribute('id')
+
+         if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+
+             document.querySelector('.nav_menu a[href*=' + sectionId + ']').classList.add('active')
+
+         }else{
+
+             document.querySelector('.nav_menu a[href*=' + sectionId + ']').classList.remove('active')
+
+         }
+
+     })
+
+ }
+
+//  Scroll animation
+
+window.sr = ScrollReveal({
+
+    origin: 'top',
+
+    distance: '80px',
+
+    duration: 1500,
+
+    reset: true
+
+})
+
+/*SCROLL HOME*/
+
+sr.reveal('.title_small',{})
+
+sr.reveal('.home_title',{delay:300})
+
+sr.reveal('.title_para',{delay:500})
+
+sr.reveal('.home_img',{origin:'right',delay:400})
+
+sr.reveal('.email_home',{delay:500})
+
+/*SCROLL ABOUT*/
+
+sr.reveal('.about_img', {delay: 500})
+
+sr.reveal('.about_subtitle', {delay: 300})
+
+sr.reveal('.about_profession', {delay: 400})
+
+sr.reveal('.about_text', {delay: 500})
+
+sr.reveal('.about_social-icon', {delay: 300, interval: 200})
+
+/*SCROLL SKILLS*/
+
+sr.reveal('.skills_subtitle', {})
+
+sr.reveal('.skills_name', {distance: '20px', delay: 50, interval: 100})
+
+sr.reveal('.skills_img', {delay: 400})
+
+/*SCROLL WORKS*/
+
+sr.reveal('.works_img', {interval: 200})
+
+// /*SCROLL CONTACT*/
+
+sr.reveal('.contact_info', {})
+
+sr.reveal('.email-link', {interval: 200})
+
+sr.reveal('.contact_social-icon', {delay: 300})
+
+
+
+  
+
