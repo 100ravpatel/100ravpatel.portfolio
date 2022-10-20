@@ -322,6 +322,31 @@ img{
     /* filter:brightness(0.7) sepia(1) hue-rotate(140deg) saturate(3); */
     filter: grayscale(1);
 }
+.about_im{
+
+    display:flex;
+
+    justify-content:center;
+
+    width: 220px;
+
+    height: 50px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+    border-radius: 5%;
+
+    margin-bottom: 3rem;
+
+    border: solid 2px var(--mustard-color);
+
+    /* filter:brightness(0.7) sepia(1) hue-rotate(140deg) saturate(3); */
+
+    filter: grayscale(1);
+
+}
 .about_img:hover{
     filter: grayscale(0);
 }
