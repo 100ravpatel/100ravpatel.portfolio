@@ -679,6 +679,19 @@ img{
     }
 }
 
+.email-link{
+    color: whitesmoke;
+    font-family: 'Times New Roman', Times, serif;
+    animation:blinking 1s infinite;
+}
+@keyframes blinking{
+    20%{   color: rgb(255, 255, 255);   }
+    97%{   color: transparent; }
+    62%{   color:transparent; }
+    100%{  color: #000;   }
+    }
+
+
 @media screen and (min-width: 1024px){
     .section-title{
         font-size: 2.5rem;
