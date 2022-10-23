@@ -208,6 +208,13 @@ img{
 }
 .nav_logo{
     color: var(--mustard-color);
+    width: 80%;
+    height: 100%;
+}
+.nav_img{
+    position: relative;
+    width: 80px ;
+    margin-left: 40px;
 }
 .nav_link:hover{
     color: var(--mustard-color);
